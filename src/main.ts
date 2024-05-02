@@ -11,6 +11,7 @@ import { IUserService } from './users/user.service.interface';
 import { UserService } from './users/user.service';
 import { IConfigService } from './config/config.service.interface';
 import { ConfigService } from './config/config.service';
+import { PrismaService } from './database/prisma.service';
 
 export interface BootstrapReturn {
   appContainer: Container;
@@ -23,6 +24,7 @@ export const appBindings = new ContainerModule((bind: interfaces.Bind) => {
   bind<IUserController>(TYPES.UserController).to(UserController);
   bind<IUserService>(TYPES.UserService).to(UserService);
   bind<IConfigService>(TYPES.ConfigService).to(ConfigService).inSingletonScope();
+  bind<PrismaService>(TYPES.PrismaService).to(PrismaService);
   bind<App>(TYPES.Applicatoin).to(App);
 });
 
